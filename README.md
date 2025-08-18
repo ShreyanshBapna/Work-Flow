@@ -88,6 +88,8 @@ VITE_BACKEND_URL="http://localhost:3000"
 npm run dev
 Runs on 👉 http://localhost:5173
 ```
+## ✨ Now open your browser and go to:
+```http://localhost:5173/signup```
 
 ## 💡 API Endpoints
 #### 🔐 Auth Routes
