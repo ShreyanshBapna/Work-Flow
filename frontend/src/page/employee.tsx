@@ -35,7 +35,7 @@ export default function Employeeboard() {
   },[])
   
   async function deleteEmployee(contentId: string) {
-      console.log("hello");
+
       await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/employee/${contentId}`, {
             headers: {
               "token": localStorage.getItem("token")

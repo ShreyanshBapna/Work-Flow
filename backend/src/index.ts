@@ -91,14 +91,16 @@ app.post("/signin", async (req: Request, res : Response) => {
 
 app.post("/employee",userMiddleware, async (req: Request, res: Response) => {
     const { name, email, role, department, status } = req.body;
-
+    // @ts-ignore
+    const { userId } = req.userId; 
     try {
         const response = await employeeModel.create({
             name,
             email,
             role,
             department,
-            status
+            status,
+            userId
         })
         return res.json({
             content: response,

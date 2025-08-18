@@ -83,13 +83,16 @@ app.post("/signin", async (req, res) => {
 });
 app.post("/employee", middleware_1.userMiddleware, async (req, res) => {
     const { name, email, role, department, status } = req.body;
+    // @ts-ignore
+    const { userId } = req.userId;
     try {
         const response = await db_1.employeeModel.create({
             name,
             email,
             role,
             department,
-            status
+            status,
+            userId
         });
         return res.json({
             content: response,
