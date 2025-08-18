@@ -7,8 +7,8 @@ WORK-FLOW is a full-stack web application designed to manage employee records wi
 
 ## ✨ Features  
 
-- 🔐 *User Authentication* – Secure signup and login with *JWT*.  
-- 🛡 *Role-Based Access Control (RBAC)* – Supports *Admin, **User, and **Intern* roles.  
+- 🔐 *User Authentication* – Secure signup and login with JWT.  
+- 🛡 *Role-Based Access Control (RBAC)* – Supports Admin, User, and Intern roles.  
 - 👥 *Employee Management (CRUD)*  
   - ➕ Create employee records (name, email, role, department, status).  
   - 📖 Read and view employee details.  
@@ -53,7 +53,7 @@ WORK-FLOW is a full-stack web application designed to manage employee records wi
 ## 1. Clone the Repository  
 ```bash
 git clone <your-repository-url>
-cd employee-management-system
+cd work-flow
 2. Backend Setup
 ```
 ## 2. Backend Setup
