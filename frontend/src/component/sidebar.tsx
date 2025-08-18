@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import { AttendenceIcon } from "../icons/attendanceIcon"
-import { DeshboardIcon } from "../icons/deshboardIcon"
+import { DashboardIcon } from "../icons/dashboardIcon"
 import { EmployeeIcon } from "../icons/employeeIcon"
 import { SettingIcon } from "../icons/settingIcon"
 import { TaskIcon } from "../icons/taskIcon"
-import { DeshboardLogo } from "../logo/deshboradLogo"
+import { DashboardLogo } from "../logo/dashboradLogo"
 
 export const Sidebar = () => {
     const navigate = useNavigate();
@@ -12,12 +12,12 @@ export const Sidebar = () => {
     return <div className="w-64 bg-[#567BFF] text-white flex flex-col justify-between">
         <div>
           <h1 className="text-2xl font-bold p-4 text-white">
-            <div className="text-white"><DeshboardLogo/></div>
+            <div className="text-white"><DashboardLogo/></div>
           </h1>
           <nav className="mt-6 flex flex-col space-y-2" >
             <a className="px-4 py-2 flex hover:bg-blue-400 rounded-md cursor-pointer" onClick={() => navigate("/dashboard")}>
                 <div className="mr-4">
-                    <DeshboardIcon/>
+                    <DashboardIcon/>
                 </div>
                 <div>
                     Dashboard
@@ -31,7 +31,7 @@ export const Sidebar = () => {
                     Employees
                 </div>
             </a>
-            <a className="px-4 py-2 flex hover:bg-blue-400 rounded-md cursor-pointer" onClick={() => navigate("/attendance")}>
+            <a className="px-4 py-2 flex hover:bg-blue-400 rounded-md cursor-pointer">
                 <div className="mr-4">
                     <AttendenceIcon/>
                 </div>

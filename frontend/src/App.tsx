@@ -2,8 +2,8 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Signup } from './page/signup'
 import { Signin } from './page/signin'
-import { Dashboard } from './page/deshboard'
-import Employeeboard from './component/employee'
+import { Dashboard } from './page/dashboard'
+import Employeeboard from './page/employee'
 
 
 

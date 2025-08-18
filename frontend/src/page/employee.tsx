@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { Button } from "./button";
+import { Button } from "../component/button";
 import { Search, Plus} from "lucide-react";
 
 import { EditIcon } from "../icons/editIcon";
 import { DeleteIcon } from "../icons/deleteIcon";
-import { CreateContentModel } from "./createEmployee";
+import { CreateContentModel } from "../component/createEmployee";
 import axios from "axios";
-import { EditCardEmployee } from "./editCardEmployee";
-import { Sidebar } from "./sidebar";
+import { EditCardEmployee } from "../component/editCardEmployee";
+import { Sidebar } from "../component/sidebar";
+
 
 interface Employee {
   _id: string; // Assuming MongoDB _id

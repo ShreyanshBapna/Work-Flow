@@ -43,9 +43,9 @@ export function Dashboard() {
           ))}
         </div>
 
-        {/* Activity + Calendar */}
+     
         <div className="grid grid-cols-3 gap-12 rounded-3xl">
-          <div className="bg-white p-4 rounded-xl shadow col-span-2">
+          <div className="bg-white p-4 rounded-xl  col-span-2">
             <div className="flex justify-between mb-2">
               <p className="font-semibold">Employee Activity</p>
               <p className="text-sm text-gray-500">Quarterly</p>
