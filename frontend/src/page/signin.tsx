@@ -29,7 +29,7 @@ export const Signin = () => {
       );
 
       localStorage.setItem("token", response.data.token);
-      navigate("/deshboard");
+      navigate("/dashboard");
       alert("Login successful!");
       
     }
