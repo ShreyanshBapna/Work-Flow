@@ -1,34 +1,35 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import axios from "axios";
 import { Email } from "../icons/email";
 import { Mainlogo } from "../logo/mainlogo";
 import { Port1, Port2 } from "../icons/port";
-import { Button } from "./button";
-import { InputBox } from "./InputBox";
+import { InputBox } from "../component/InputBox";
+import { RInputBox } from "../component/radioInput";
+import { Button } from "../component/button";
+import { useNavigate } from "react-router-dom";
 
-
-export const Signin = () => {
+export const Signup = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
+  const [role, setRole] = useState<"Admin" | "User" | "Intern">("User");
+  const navigate = useNavigate();
 
-  async function createToken() {
+  async function createUser() {
     const password = passwordRef.current?.value;
     const email = emailRef.current?.value;
 
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/signin`, {
+        `${import.meta.env.VITE_BACKEND_URL}/signup`, {
           password,
           email,
+          role,
         }
       );
-
-      localStorage.setItem("token", response.data.token);
-      alert("Login successful!");
-      
-    }
-    catch (error) {
+      alert(response.data.message);
+      navigate("/signin")
+    } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error("Signup failed:", error.response?.data);
         alert(error.response?.data?.message || "Signup failed. Please try again.");
@@ -65,12 +66,44 @@ export const Signin = () => {
             />
           </div>
 
+          <div className="flex justify-between items-center">
+            <div className="font-medium">Role</div>
+            <div className="flex">
+              <RInputBox
+                id="Admin"
+                type="radio"
+                name="role"
+                value="Admin"
+                className="mx-2"
+                heading="Admin"
+                onChange={() => setRole("Admin")}
+              />
+              <RInputBox
+                id="Intern"
+                type="radio"
+                name="role"
+                value="Intern"
+                className="mx-2"
+                heading="Intern"
+                onChange={() => setRole("Intern")}
         
+              />
+              <RInputBox
+                id="User"
+                type="radio"
+                name="role"
+                value="User"
+                className="mx-2"
+                heading="User"
+                onChange={() => setRole("User")}
+              />
+            </div>
+          </div>
           <div className="flex items-center justify-center">
             <Button
-              onClick={createToken}
+              onClick={createUser}
               StartIcon={<Email />}
-              heading="Login with Email"
+              heading="Signup with Email"
             />
           </div>
         </div>

@@ -3,7 +3,8 @@ import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useState } from "react";
-import { Card } from "./card";
+import { Card } from "../component/card";
+import { Sidebar } from "../component/sidebar";
 
 
 const stats = [
@@ -30,9 +31,10 @@ const data = [
 export function Dashboard() {
   const [date, setDate] = useState(new Date());
 
-  return (
-    <div className="flex h-screen w-full bg-[#E7ECFE] p-6">
-
+  return (<div className="flex">
+      <Sidebar/>
+     <div className="flex h-screen w-full bg-[#E7ECFE] p-6">
+      
       <main className="flex-1 p-6 overflow-y-auto">
 
         <div className="grid grid-cols-3 gap-12 mb-12">
@@ -71,6 +73,8 @@ export function Dashboard() {
         </div>
       </main>
     </div>
+  </div>
+   
   );
 }
 

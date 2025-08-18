@@ -92,6 +92,7 @@ app.post("/employee", middleware_1.userMiddleware, async (req, res) => {
             status
         });
         return res.json({
+            content: response,
             message: "Employee data Create successfully"
         });
     }

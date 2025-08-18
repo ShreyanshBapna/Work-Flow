@@ -1,16 +1,21 @@
-import { Sidebar } from './component/sidebar'
 import './App.css'
-import Empolyeeboard from './component/employee'
-import { Signup } from './component/signup'
-import { Signin } from './component/signin'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { Signup } from './page/signup'
+import { Signin } from './page/signin'
+import { Dashboard } from './page/deshboard'
+import Employeeboard from './component/employee'
+
 
 
 function App() {
-  return <div className='flex'>
-    <Sidebar />
-    <Empolyeeboard />
-   
-  </div>
+  return <BrowserRouter>
+    <Routes>
+      <Route path="/signup" element={<Signup/>}/> 
+      <Route path="/signin" element={<Signin/>}/> 
+      <Route path="/dashboard" element={<Dashboard/>}/> 
+      <Route path="/employee" element={<Employeeboard/>}/> 
+    </Routes>
+  </BrowserRouter>
 }
 
 export default App

@@ -7,6 +7,7 @@ import { DeleteIcon } from "../icons/deleteIcon";
 import { CreateContentModel } from "./createEmployee";
 import axios from "axios";
 import { EditCardEmployee } from "./editCardEmployee";
+import { Sidebar } from "./sidebar";
 
 interface Employee {
   _id: string; // Assuming MongoDB _id
@@ -18,7 +19,7 @@ interface Employee {
   userId?: string; // Optional, if it's stored but not always used on the frontend
 }
 
-export default function Empolyeeboard() {
+export default function Employeeboard() {
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
   const [content, setContent] = useState<Employee[]>([]);
@@ -45,12 +46,13 @@ export default function Empolyeeboard() {
   
 
   return (
-    
-    <div className="flex-1 h-screen bg-[#E7ECFE]">
+    <div className="flex">
+      <Sidebar/>
+       <div className="flex-1 h-screen bg-[#E7ECFE]">
       {editCardOpen.open && <EditCardEmployee contentId={editCardOpen.contentId} open={editCardOpen.open} onClose={() => setEditCardOpen({open: false, contentId: ""})} />}
-      <CreateContentModel open={open} onClose={() => {setOpen(!open)}}/>
+      <CreateContentModel open={open} onClose={() => {setOpen(!open)}} setContent={setContent}/>
      
-
+      
       <main className="flex-1 p-6">
         <header className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-[#567BFF]">Employees</h2>
@@ -105,6 +107,8 @@ export default function Empolyeeboard() {
         </div>
       </main>
     </div>
+    </div>
+   
   );
 }
 

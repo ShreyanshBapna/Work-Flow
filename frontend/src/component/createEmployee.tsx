@@ -4,8 +4,17 @@ import { Button } from "./button";
 import { ManLogo } from "../logo/menlogo";
 import axios from "axios";
 
+interface Employee {
+  _id: string; // Assuming MongoDB _id
+  name: string;
+  email: string;
+  role: string;
+  department: string;
+  status: "Active" | "Inactive";
+  userId?: string; // Optional, if it's stored but not always used on the frontend
+}
 
-export function CreateContentModel({open, onClose}: {open: boolean, onClose: () => void}) {
+export function CreateContentModel({open, onClose, setContent}: {open: boolean, onClose: () => void, setContent: React.Dispatch<React.SetStateAction<Employee[]>>;}) {
     const nameRef = useRef<HTMLInputElement>(null);
     const emailRef = useRef<HTMLInputElement>(null);
     const roleRef = useRef<HTMLSelectElement>(null);
@@ -32,7 +41,8 @@ export function CreateContentModel({open, onClose}: {open: boolean, onClose: () 
         }   
         )
         alert(response.data.message);
-        onClose()
+        setContent((prev) => [...prev, response.data.content]);
+        onClose();
     } 
     const role = ["Ethical Hacker", "Software Tester", "Marketing Coordinator", "Web Designer", "UI/UX Designer", "President of Sales", "Software Developer", "Team Leader", "Project Manager", "Scrum Master"];
     const department = ["Engineering", "Operations", "Human Resources", "Manning", "HSEQ", "IT", "Maintenance"]

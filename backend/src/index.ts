@@ -101,6 +101,7 @@ app.post("/employee",userMiddleware, async (req: Request, res: Response) => {
             status
         })
         return res.json({
+            content: response,
             message: "Employee data Create successfully"
         })
     } catch (e) {
