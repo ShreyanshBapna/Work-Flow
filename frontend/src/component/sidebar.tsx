@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom"
-import { AttendenceIcon } from "../icons/attendanceIcon"
 import { DashboardIcon } from "../icons/dashboardIcon"
 import { EmployeeIcon } from "../icons/employeeIcon"
-import { SettingIcon } from "../icons/settingIcon"
 import { TaskIcon } from "../icons/taskIcon"
 import { DashboardLogo } from "../logo/dashboradLogo"
 
@@ -31,15 +29,7 @@ export const Sidebar = () => {
                     Employees
                 </div>
             </a>
-            <a className="px-4 py-2 flex hover:bg-blue-400 rounded-md cursor-pointer">
-                <div className="mr-4">
-                    <AttendenceIcon/>
-                </div>
-                <div>
-                    Attendance
-                </div>
-            </a>
-            <a className="px-4 py-2 flex hover:bg-blue-400 rounded-md cursor-pointer">
+            <a className="px-4 py-2 flex hover:bg-blue-400 rounded-md cursor-pointer" onClick={() => navigate("/task")}>
                 <div className="mr-4">
                     <TaskIcon/>
                 </div>
@@ -47,14 +37,7 @@ export const Sidebar = () => {
                     Tasks
                 </div>
             </a>
-            <a className="px-4 py-2 flex hover:bg-blue-400 rounded-md cursor-pointer">
-                <div className="mr-4">
-                    <SettingIcon/>
-                </div>
-                <div>
-                    Settings
-                </div>
-            </a>
+          
           </nav>
         </div>
         <div className="p-4 flex items-center gap-2">

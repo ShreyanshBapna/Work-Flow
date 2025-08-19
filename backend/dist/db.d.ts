@@ -1,4 +1,67 @@
 import mongoose from "mongoose";
+export declare const taskModel: mongoose.Model<{
+    name?: string | null;
+    department?: string | null;
+    status?: "Pending" | "In Progress" | "Completed" | null;
+    userId?: mongoose.Types.ObjectId | null;
+    task?: string | null;
+    priority?: "High" | "Medium" | "Low" | null;
+    employeeId?: mongoose.Types.ObjectId | null;
+    dueDate?: NativeDate | null;
+}, {}, {}, {}, mongoose.Document<unknown, {}, {
+    name?: string | null;
+    department?: string | null;
+    status?: "Pending" | "In Progress" | "Completed" | null;
+    userId?: mongoose.Types.ObjectId | null;
+    task?: string | null;
+    priority?: "High" | "Medium" | "Low" | null;
+    employeeId?: mongoose.Types.ObjectId | null;
+    dueDate?: NativeDate | null;
+}, {}, mongoose.DefaultSchemaOptions> & {
+    name?: string | null;
+    department?: string | null;
+    status?: "Pending" | "In Progress" | "Completed" | null;
+    userId?: mongoose.Types.ObjectId | null;
+    task?: string | null;
+    priority?: "High" | "Medium" | "Low" | null;
+    employeeId?: mongoose.Types.ObjectId | null;
+    dueDate?: NativeDate | null;
+} & {
+    _id: mongoose.Types.ObjectId;
+} & {
+    __v: number;
+}, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
+    name?: string | null;
+    department?: string | null;
+    status?: "Pending" | "In Progress" | "Completed" | null;
+    userId?: mongoose.Types.ObjectId | null;
+    task?: string | null;
+    priority?: "High" | "Medium" | "Low" | null;
+    employeeId?: mongoose.Types.ObjectId | null;
+    dueDate?: NativeDate | null;
+}, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
+    name?: string | null;
+    department?: string | null;
+    status?: "Pending" | "In Progress" | "Completed" | null;
+    userId?: mongoose.Types.ObjectId | null;
+    task?: string | null;
+    priority?: "High" | "Medium" | "Low" | null;
+    employeeId?: mongoose.Types.ObjectId | null;
+    dueDate?: NativeDate | null;
+}>, {}, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & mongoose.FlatRecord<{
+    name?: string | null;
+    department?: string | null;
+    status?: "Pending" | "In Progress" | "Completed" | null;
+    userId?: mongoose.Types.ObjectId | null;
+    task?: string | null;
+    priority?: "High" | "Medium" | "Low" | null;
+    employeeId?: mongoose.Types.ObjectId | null;
+    dueDate?: NativeDate | null;
+}> & {
+    _id: mongoose.Types.ObjectId;
+} & {
+    __v: number;
+}>>;
 export declare const employeeModel: mongoose.Model<{
     name?: string | null;
     email?: string | null;

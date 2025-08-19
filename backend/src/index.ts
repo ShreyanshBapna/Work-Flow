@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express"
-import { employeeModel, userModel } from "./db";
+import { employeeModel, taskModel, userModel } from "./db";
 import bcrypt, { hash } from "bcrypt";
 import jwt from "jsonwebtoken";
 import zod from "zod";
@@ -179,7 +179,75 @@ app.put("/employee/:contentId", userMiddleware, async (req: Request, res: Respon
     }
 })
 
+app.post("/task", userMiddleware, async (req: Request, res: Response) => {
+    const {  task, employee, priority, department, status, date } = req.body;
+    // @ts-ignore
+    const { userId } = req; 
+
+    const employeeName = await employeeModel.findOne({
+        _id: employee
+    })
+
+    try {
+        const response = await taskModel.create({
+            name: employeeName?.name,
+            status,
+            task,
+            department,
+            priority,
+            employeeId: employee,
+            dueDate: date,
+            userId
+        })
+        return res.json({
+            content: response,
+            message: "Employee data Create successfully"
+        })
+    } catch (e) {
+        return res.json({
+            message: "Something went wrong",
+            error: e
+        })
+    }
+})
 
 
+app.get("/task", userMiddleware, async (req: Request, res: Response) => {
+    // @ts-ignore
+    const userId = req.userId;
+
+    try {
+        const response = await taskModel.find({
+            userId
+        });
+        return res.json({
+            content: response
+        })
+    } catch (e) {
+        return res.json({
+            message: "Something went wrong",
+            error: e
+        })
+    }
+})
+
+
+app.delete("/task/:taskId", userMiddleware, async (req: Request, res: Response) => {
+    // @ts-ignore
+    const {taskId} = req.params;
+    try {
+        const response = await taskModel.deleteOne({
+            _id: taskId
+        });
+        return res.json({
+            message: "Employee data deleted successfully"
+        })
+    } catch (e) {
+        return res.json({
+            message: "Something went wrong",
+            error: e
+        })
+    }
+})
 
 app.listen(3000)

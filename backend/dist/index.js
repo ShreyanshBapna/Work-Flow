@@ -166,5 +166,72 @@ app.put("/employee/:contentId", middleware_1.userMiddleware, async (req, res) =>
         });
     }
 });
+app.post("/task", middleware_1.userMiddleware, async (req, res) => {
+    const { task, employee, priority, department, status, date } = req.body;
+    // @ts-ignore
+    const { userId } = req;
+    const employeeName = await db_1.employeeModel.findOne({
+        _id: employee
+    });
+    console.log(employeeName);
+    try {
+        const response = await db_1.taskModel.create({
+            name: employeeName?.name,
+            status,
+            task,
+            department,
+            priority,
+            employeeId: employee,
+            dueDate: date,
+            userId
+        });
+        return res.json({
+            content: response,
+            message: "Employee data Create successfully"
+        });
+    }
+    catch (e) {
+        return res.json({
+            message: "Something went wrong",
+            error: e
+        });
+    }
+});
+app.get("/task", middleware_1.userMiddleware, async (req, res) => {
+    // @ts-ignore
+    const userId = req.userId;
+    try {
+        const response = await db_1.taskModel.find({
+            userId
+        });
+        return res.json({
+            content: response
+        });
+    }
+    catch (e) {
+        return res.json({
+            message: "Something went wrong",
+            error: e
+        });
+    }
+});
+app.delete("/task/:taskId", middleware_1.userMiddleware, async (req, res) => {
+    // @ts-ignore
+    const { taskId } = req.params;
+    try {
+        const response = await db_1.taskModel.deleteOne({
+            _id: taskId
+        });
+        return res.json({
+            message: "Employee data deleted successfully"
+        });
+    }
+    catch (e) {
+        return res.json({
+            message: "Something went wrong",
+            error: e
+        });
+    }
+});
 app.listen(3000);
 //# sourceMappingURL=index.js.map

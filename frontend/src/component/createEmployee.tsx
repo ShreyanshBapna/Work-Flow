@@ -4,6 +4,8 @@ import { Button } from "./button";
 import { ManLogo } from "../logo/menlogo";
 import axios from "axios";
 
+const statusOptions = ["Active", "Inactive"];
+
 interface Employee {
   _id: string; // Assuming MongoDB _id
   name: string;
@@ -19,12 +21,14 @@ export function CreateContentModel({open, onClose, setContent}: {open: boolean, 
     const emailRef = useRef<HTMLInputElement>(null);
     const roleRef = useRef<HTMLSelectElement>(null);
     const departmentRef = useRef<HTMLSelectElement>(null);
+    const statusRef = useRef<HTMLSelectElement>(null);
 
     async function createContent(){
         const name = nameRef.current?.value;
         const email = emailRef.current?.value;
         const role = roleRef.current?.value;
         const department = departmentRef.current?.value;
+        const status = statusRef.current?.value;
 
         console.log(name, email, role, department);
         const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/employee`, {
@@ -32,7 +36,7 @@ export function CreateContentModel({open, onClose, setContent}: {open: boolean, 
             email,
             role,   
             department,
-            status: "Active"
+            status
         }, 
         {
             headers: {
@@ -82,10 +86,18 @@ export function CreateContentModel({open, onClose, setContent}: {open: boolean, 
                                 {department.map((department) => <option key={department} value={department}>{department}</option>)}
                                 </select>
                             </div>
+                         
+                        </div>
+                       <div className="flex flex-col ">
+                            <label htmlFor="status" className="mb-1 text-md font-medium">Status</label>
+                            <select ref={statusRef} id="department" name="status" className="rounded-md border-1 border-[#BFBFBF] py-2 text-[#94A3B8] shadow-sm p-1 ">
+                            <option selected disabled hidden>Select department</option>
+                            {statusOptions.map((statusOptions) => <option key={statusOptions} value={statusOptions}>{statusOptions}</option>)}
+                            </select>
                         </div>
                         <div className="flex mt-7 ">
                             <div className="mr-2">     
-                                <Button onClick={() => { createContent()}} heading="Add Employee"/>
+                                <Button onClick={() => {createContent()}} heading="Add Employee"/>
                             </div>
                             <div>
                                 <Button onClick={onClose} heading="Cancel"/>

@@ -4,6 +4,7 @@ import { Signup } from './page/signup'
 import { Signin } from './page/signin'
 import { Dashboard } from './page/dashboard'
 import Employeeboard from './page/employee'
+import Taskboard from './page/task'
 
 
 
@@ -15,6 +16,7 @@ function App() {
       <Route path="/signin" element={<Signin/>}/> 
       <Route path="/dashboard" element={<Dashboard/>}/> 
       <Route path="/employee" element={<Employeeboard/>}/> 
+      <Route path="/task" element={<Taskboard/>}/> 
     </Routes>
   </BrowserRouter>
 }
