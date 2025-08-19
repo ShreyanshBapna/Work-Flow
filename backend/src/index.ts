@@ -22,6 +22,7 @@ app.use(express.json());
 
 app.post("/signup", async (req: Request, res : Response) => {
     const { role, password, email } = req.body;
+
     const {success} = signupSchema.safeParse(req.body);
     
     if(success){
@@ -62,7 +63,7 @@ app.post("/signin", async (req: Request, res : Response) => {
             const realPassword = await bcrypt.compare(password, user?.password!);
 
             if(realPassword){
-                const token = jwt.sign({ email }, process.env.JWT_SECRET!);
+                const token = jwt.sign({id: user._id }, process.env.JWT_SECRET!);
                 return res.json({
                     token
                 });
@@ -92,7 +93,8 @@ app.post("/signin", async (req: Request, res : Response) => {
 app.post("/employee",userMiddleware, async (req: Request, res: Response) => {
     const { name, email, role, department, status } = req.body;
     // @ts-ignore
-    const { userId } = req.userId; 
+    const { userId } = req; 
+
     try {
         const response = await employeeModel.create({
             name,
@@ -137,7 +139,6 @@ app.get("/employee", userMiddleware, async (req: Request, res: Response) => {
 app.delete("/employee/:contentId", userMiddleware, async (req: Request, res: Response) => {
     // @ts-ignore
     const {contentId} = req.params;
-    console.log(contentId);
     try {
         const response = await employeeModel.deleteOne({
             _id: contentId

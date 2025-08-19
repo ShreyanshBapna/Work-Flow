@@ -57,7 +57,7 @@ app.post("/signin", async (req, res) => {
         if (user) {
             const realPassword = await bcrypt_1.default.compare(password, user?.password);
             if (realPassword) {
-                const token = jsonwebtoken_1.default.sign({ email }, process.env.JWT_SECRET);
+                const token = jsonwebtoken_1.default.sign({ id: user._id }, process.env.JWT_SECRET);
                 return res.json({
                     token
                 });
@@ -84,7 +84,7 @@ app.post("/signin", async (req, res) => {
 app.post("/employee", middleware_1.userMiddleware, async (req, res) => {
     const { name, email, role, department, status } = req.body;
     // @ts-ignore
-    const { userId } = req.userId;
+    const { userId } = req;
     try {
         const response = await db_1.employeeModel.create({
             name,
@@ -127,7 +127,6 @@ app.get("/employee", middleware_1.userMiddleware, async (req, res) => {
 app.delete("/employee/:contentId", middleware_1.userMiddleware, async (req, res) => {
     // @ts-ignore
     const { contentId } = req.params;
-    console.log(contentId);
     try {
         const response = await db_1.employeeModel.deleteOne({
             _id: contentId

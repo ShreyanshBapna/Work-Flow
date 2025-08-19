@@ -53,21 +53,15 @@ export declare const employeeModel: mongoose.Model<{
 export declare const userModel: mongoose.Model<{
     password?: string | null;
     email?: string | null;
-    role?: {
-        enum: unknown[] | unknown[] | unknown[];
-    } | null;
+    role?: "Admin" | "User" | "Intern" | null;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     password?: string | null;
     email?: string | null;
-    role?: {
-        enum: unknown[] | unknown[] | unknown[];
-    } | null;
+    role?: "Admin" | "User" | "Intern" | null;
 }, {}, mongoose.DefaultSchemaOptions> & {
     password?: string | null;
     email?: string | null;
-    role?: {
-        enum: unknown[] | unknown[] | unknown[];
-    } | null;
+    role?: "Admin" | "User" | "Intern" | null;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -75,21 +69,15 @@ export declare const userModel: mongoose.Model<{
 }, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
     password?: string | null;
     email?: string | null;
-    role?: {
-        enum: unknown[] | unknown[] | unknown[];
-    } | null;
+    role?: "Admin" | "User" | "Intern" | null;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     password?: string | null;
     email?: string | null;
-    role?: {
-        enum: unknown[] | unknown[] | unknown[];
-    } | null;
+    role?: "Admin" | "User" | "Intern" | null;
 }>, {}, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & mongoose.FlatRecord<{
     password?: string | null;
     email?: string | null;
-    role?: {
-        enum: unknown[] | unknown[] | unknown[];
-    } | null;
+    role?: "Admin" | "User" | "Intern" | null;
 }> & {
     _id: mongoose.Types.ObjectId;
 } & {

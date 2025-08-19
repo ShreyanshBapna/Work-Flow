@@ -58,6 +58,8 @@ const UserSchema = new mongoose_1.default.Schema({
     },
     role: {
         enum: ["Admin", "User", "Intern"],
+        type: String,
+        require: true,
     }
 });
 const employeeSchema = new mongoose_1.default.Schema({
